@@ -14,7 +14,7 @@ function App() {
         })
     .catch(() => {
          //handle errors
-    })
+    });
     }, []);
 
     //Post data
@@ -25,9 +25,27 @@ function App() {
         City: ''
     })
 
-const handleChange = ()
+const handleChange = (event) => {
+    setFormData({
+        ...formData,
+        [event.target.name] : event.target.value
+    })
+};
 
-  return (
+
+const handleSubmit = (event) => {
+    event.PreventDefault();
+    axios.post('http://localhost:8800/persons/submit-form', formData)
+    .then(() => {
+        //Handle success
+        setSuccess(true);
+    })
+    .catch(() => {
+        //Handle errors
+    })
+};
+
+return (
     <>
     <div>
         <form onSubmit={handleSubmit}>
