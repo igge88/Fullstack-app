@@ -74,6 +74,12 @@ return (
                 {success && <p>Form is submitted</p>}
             </div>
         </form>
+
+        {data.map(item => (
+            <div key={item.id}>
+            <p>{item.firstname} {item.lastnaem}</p>
+            </div>
+        ))}
     </div>
     </>
   )
